@@ -1,20 +1,41 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <link rel="stylesheet" href="style.css">
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <link rel="stylesheet" href="style.css" />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Login</title>
-</head>
-<body>
-    <h1 class="title">Login kurwa</h1>
+  </head>
+  <body>
     <main>
-        <article class="fieldset1">
-        <fieldset class="input-area">
-        <label for="name">login: </label> <input placeholder="Enter login" id="name" name="name" type="text" required />
-        <label for="password">password: </label> <input placeholder="Enter password" id="password" name="password" type="password" required />
-    </fieldset>
-    </article>
+      <article class="fieldset1">
+        <div class="input-area">
+          <h1 class="title">Please login to join us</h1>
+          <fieldset>
+            <button class="button">Continue as a guest</button>
+              <h3 class="hr-lines">or</h3>
+              <label for="name">Login: </label>
+              <input
+              placeholder="Enter your Username"
+              id="name"
+              name="name"
+              type="text"
+              required
+              />
+            <label for="password">Password: </label>
+            <input
+              placeholder="Enter password"
+              id="password"
+              name="password"
+              type="password"
+              required
+            />
+          </fieldset>
+          <a href="/" class="forgot-password">Forgot password?</a>
+          <button class="button">Sign in</button>
+          <p class="register">Don't have account? <a href="/">Register</a></p>
+        </div>
+      </article>
     </main>
-</body>
+  </body>
 </html>
