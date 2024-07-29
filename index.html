@@ -2,40 +2,58 @@
 <html lang="en">
   <head>
     <link rel="stylesheet" href="style.css" />
+    <script src="main.js"></script>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Login</title>
   </head>
   <body>
     <main>
-      <article class="fieldset1">
+      <form
+        id="registrationForm"
+        class="fieldset1"
+        onsubmit="return validateForm()"
+      >
         <div class="input-area">
           <h1 class="title">Please login to join us</h1>
           <fieldset>
-            <button class="button">Continue as a guest</button>
-              <h3 class="hr-lines">or</h3>
-              <label for="name">Login: </label>
-              <input
+            <button type="button" href="/" class="button">
+              Continue as a guest
+            </button>
+            <h3 class="hr-lines">or</h3>
+            <label for="name">Login: </label>
+            <input
               placeholder="Enter your Username"
               id="name"
               name="name"
               type="text"
-              required
-              />
+            />
+            <div id="nameError" class="error"></div>
+            <label for="email">Email: </label>
+            <input
+              placeholder="Enter your e-mail"
+              id="email"
+              name="email"
+              type="email"
+            />
+            <div id="emailError" class="error"></div>
             <label for="password">Password: </label>
             <input
               placeholder="Enter password"
               id="password"
               name="password"
               type="password"
-              required
             />
+            <div id="passwordError" class="error"></div>
           </fieldset>
           <a href="/" class="forgot-password">Forgot password?</a>
-          <button class="button">Sign in</button>
+          <button id="submit-btn" type="submit" class="button">Sign in</button>
+          <div id="successMessage" class="success" style="display: none">
+            Registration Successful!
+          </div>
           <p class="register">Don't have account? <a href="/">Register</a></p>
         </div>
-      </article>
+      </form>
     </main>
   </body>
 </html>
