@@ -62,10 +62,10 @@ label {
   margin: 30px 0 10px 0;
 }
 .forgot-password {
-  font-size: 10px;
+  font-size: 14px;
   width: 100%;
   text-align: right;
-  margin-top: 5px;
+  margin-top: 0px;
 }
 fieldset {
   border: none;
@@ -101,4 +101,34 @@ fieldset {
 }
 .register {
   color: rgb(85, 85, 85);
+  text-align: center;
+}
+.error {
+  color: red;
+}
+.Checkbox {
+  margin: 0;
+  width: 20px;
+  position: left;
+  min-width: 30px;
+}
+.RememberMe {
+  
+}
+.CheckboxRememberMe {
+  margin-bottom: 0px;
+}
+.eye {
+  max-width: 25px;
+  max-height: 25px;
+  position: absolute;
+  display: block;
+  top: 10px;
+  right: 20px;
+}
+.passwordEye {
+  position: relative;
+}
+#password {
+  padding-right: 60px;
 }

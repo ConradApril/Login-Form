@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
     <link rel="stylesheet" href="style.css" />
-    <script src="main.js"></script>
+
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Login</title>
@@ -12,7 +12,7 @@
       <form
         id="registrationForm"
         class="fieldset1"
-        onsubmit="return validateForm()"
+        onsubmit="validateForm(event)"
       >
         <div class="input-area">
           <h1 class="title">Please login to join us</h1>
@@ -38,22 +38,40 @@
             />
             <div id="emailError" class="error"></div>
             <label for="password">Password: </label>
-            <input
-              placeholder="Enter password"
-              id="password"
-              name="password"
-              type="password"
-            />
+
+            <div class="passwordEye">
+              <input
+                placeholder="Enter password"
+                type="password"
+                id="password"
+              />
+              <img
+                class="eye"
+                onclick="TogglePassword()"
+                src="CLOSEDEYE.png"
+                alt="eye"
+              />
+            </div>
+
             <div id="passwordError" class="error"></div>
+
+            <p class="CheckboxRememberMe">
+              <input class="Checkbox" type="checkbox" id="rememberMe"/><a class="RememberMe"
+                >Remember me</a
+              >
+            </p>
+            <a href="/" class="forgot-password">Forgot password?</a>
+            <button href="/" id="submit-btn" type="submit" class="button">
+              Sign in
+            </button>
+            <div id="successMessage" class="success" style="display: none">
+              Registration Successful!
+            </div>
+            <p class="register">Don't have account? <a href="/">Register</a></p>
           </fieldset>
-          <a href="/" class="forgot-password">Forgot password?</a>
-          <button id="submit-btn" type="submit" class="button">Sign in</button>
-          <div id="successMessage" class="success" style="display: none">
-            Registration Successful!
-          </div>
-          <p class="register">Don't have account? <a href="/">Register</a></p>
         </div>
       </form>
     </main>
+    <script src="main.js"></script>
   </body>
 </html>
