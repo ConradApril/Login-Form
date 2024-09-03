@@ -72,13 +72,13 @@ async function validateForm(event) {
         }
       });
     }
-    //  if (valid) {
-      //    successMessage.style.display = "block";
-      //    setTimeout(function () {
-        //      successMessage.style.display = "none";
-        //      document.getElementById("registrationForm").reset();
-        //    }, 2000);
-        //  }
+     if (valid) {
+         successMessage.style.display = "block";
+         setTimeout(function () {
+             successMessage.style.display = "none";
+             document.getElementById("registrationForm").reset();
+           }, 2000);
+         }
         if (valid) {
     RememberMe(name, email, password);
     window.location.href = "/";
@@ -91,7 +91,13 @@ function RememberMe(name, email, password) {
     localStorage.email = email;
     localStorage.passInput = password;
     localStorage.checkbox = rmCheck.value;
+  } else {
+    localStorage.name = "";
+    localStorage.email = "";
+    localStorage.passInput = "";
+    localStorage.checkbox = "";
   }
+  
 }
 function TogglePassword() {
   var x = document.getElementById("password");
@@ -105,3 +111,51 @@ function TogglePassword() {
     icon[0].src = "CLOSEDEYE.png";
   }
 }
+
+import { create } from 'simple-oauth2';
+
+const oauth2 = create({
+  client: {
+    id: 'Ov23liDLvTfRwl271jGn',
+    secret: '7ed7b0ec340a912f139e4338064c9e296e8c987a',
+  },
+  auth: {
+    tokenHost: 'https://github.com',
+    tokenPath: '/login/oauth/access_token',
+    authorizePath: '/login/oauth/authorize',
+  },
+});
+const authorizationUri = oauth2.authorizationCode.authorizeURL({
+  redirect_uri: 'http://localhost:3000/callback',
+  scope: 'read:user', // The requested scope
+});
+
+// Redirect the user to the authorization URI
+console.log('Authorize URL: ', authorizationUri);
+
+const tokenParams = {
+  code: 'test',
+  redirect_uri: 'https://github.com/login/oauth/authorize',
+};
+
+(async () => {
+  try {
+    const result = await oauth2.authorizationCode.getToken(tokenParams);
+    const accessToken = oauth2.accessToken.create(result);
+    console.log('Access Token:', accessToken.token.access_token);
+  } catch (error) {
+    console.error('Access Token Error:', error.message);
+  }
+})();
+
+(async () => {
+  try {
+    const userInfo = await oauth2.accessToken.create({
+      access_token: '',
+    }).get('https://api.provider.com/userinfo');
+
+    console.log('User Info:', userInfo);
+  } catch (error) {
+    console.error('User Info Error:', error.message);
+  }
+})();
